@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class PhoneBook extends Phone {
     ArrayList<KhuonMau> listPhone;
@@ -8,7 +9,25 @@ public class PhoneBook extends Phone {
     }
 
     public void insertPhone(String name, String phone) {
-          listPhone.add(new KhuonMau(name,phone));
+        if(listPhone.isEmpty()){
+            listPhone.add(new KhuonMau(name,phone));
+        }
+        else {
+            for(int i=0; i<listPhone.size();i++){
+                if(listPhone.get(i).name.equals(name)){
+                    if(listPhone.get(i).phone.equals(phone)){
+                        System.out.println("Tên và sdt người này đã có ở trong danh bạ rồi");
+                    }
+                    else {
+                        listPhone.add(new KhuonMau(name,phone));
+                    }
+                    break;
+                }
+                else {
+                    listPhone.add(new KhuonMau(name,phone));
+                }
+            }
+        }
     }
 
     @Override
